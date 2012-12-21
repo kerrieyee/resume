@@ -4,6 +4,7 @@ class ResumesController < ApplicationController
   end
 
   def new
+    @resume = Resume.create(params[:resume])
   end
 
   def create
