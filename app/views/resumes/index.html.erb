@@ -2,7 +2,8 @@
 
 <p><%if @resumes.length > 0 %>
 		<%@resumes.each do |resume| %>
-			<%=resume%>
+			<%=resume.name%></br>
+			<%=resume.description%></br></br>
 		<%end%>
 	<%end%>
 </p>
