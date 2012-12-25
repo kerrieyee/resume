@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 describe Resume do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject {Fabricate(:resume)}
+
+  it {should belong_to :user}
 end
