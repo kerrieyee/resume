@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+	subject { Fabricate(:user) }
+  it { should validate_presence_of :name}
+  it { should have_many :resumes}
 end
