@@ -1,4 +1,4 @@
-== Welcome to Resume builder
+== Resume Builder
 
 This program is very still much in its infant stages.  
 In the end, it will be an app that takes the inputted resume information and creates a nice pdf layout.
