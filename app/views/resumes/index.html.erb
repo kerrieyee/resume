@@ -1,11 +1,39 @@
-<h1><%= "#{current_user.email} Resumes" %></h1>
-
-<p><%if @resumes.length > 0 %>
-		<%@resumes.each do |resume| %>
-			<%=resume.name%></br>
-			<%=resume.description%></br></br>
-		<%end%>
+<h1><%= "#{current_user.name}'s Resumes" %></h1>
+<div id = "create_resume_form">
+	<%=form_for(Resume.new, remote: true) do |f|%>
+		<%=f.label :name%>
+		<%=f.text_field :name%> </br>
+		<%=f.label :description%>
+		<%=f.text_field :description%></br>
+		<%=f.submit "Create New Resume"%>
 	<%end%>
-</p>
+<div>
+
+<% if @resumes.count%>
+	<table id="resume_list">
+		<thead>
+			<tr>
+				<th> Resume Name </th>
+				<th> Description </th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @resumes.each do |resume|%>
+				<tr>
+					<td><%=resume.name%></td>
+					<td><%=resume.description%></td>
+				</tr>
+			<%end%>
+		</tbody>
+	</table>
+<%end%>
+<%#=create_resume_list(@resumes)%>
+
+
+
+
+
+
+
 
 

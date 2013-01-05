@@ -11,11 +11,19 @@ describe "Resumes " do
 				visit resumes_path
 				page.should have_content(resume.name)
 			end
+
+			it "should have a button that says create resume" do
+				visit resumes_path
+				page.should have_button("Create New Resume")
+			end 
 		end
 
 		describe "resumes#new" do
 			it "displays a form to create a new resume" 
+				visit new_resume_path
+				fill_in 'resume_name', :with => "Application for DBC"
+				fill_in 'resume_description', :with => "Applying for a student position with DBC"
+				click_button "Submit"
 		end
-
 	end
 end
