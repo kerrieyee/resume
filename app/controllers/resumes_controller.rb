@@ -1,6 +1,7 @@
 class ResumesController < ApplicationController
+
   def index
-    @resumes = Resume.where(params[:current_user])
+    @resumes = Resume.where(:user_id => current_user.id)
   end
 
   def new
@@ -12,18 +13,12 @@ class ResumesController < ApplicationController
                           :description =>params[:resume][:description],
                           :user => current_user)
     respond_to do |format|
-      if @resume.save 
-        format.json {render json: @resume,
-                            status: :created,
-                            location: @resume}
-        format.html{redirect_to @resume,
-                    notice: 'Tweet was successfully created'}
+      if @resume.save
+        #need to add error handling
+        format.js 
       else
-        format.html{render action: "new"}
-        format.json{render json: @resume.errors,
-                                status: :unprocessable_entity}
+        format.js 
       end
-      format.js
     end
   end
 
