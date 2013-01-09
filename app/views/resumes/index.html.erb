@@ -9,24 +9,20 @@
 	<%end%>
 <div>
 
-<% if @resumes.count%>
-	<table id="resume_list">
+<table id="resume_list">
 		<thead>
 			<tr>
+				<th> # </th>
 				<th> Resume Name </th>
 				<th> Description </th>
 			</tr>
-		</thead>
+		</thead>	
 		<tbody>
 			<% @resumes.each do |resume|%>
-				<tr>
-					<td><%=resume.name%></td>
-					<td><%=resume.description%></td>
-				</tr>
+				<%= render resume%>
 			<%end%>
 		</tbody>
-	</table>
-<%end%>
+</table>
 <%#=create_resume_list(@resumes)%>
 
 
