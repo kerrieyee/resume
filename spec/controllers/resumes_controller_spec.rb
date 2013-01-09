@@ -10,4 +10,15 @@ describe ResumesController do
     end
   end
 
+  describe "#create" do
+  	it "creates a new resume and increases the resume count by 1" do
+  		expect{
+  		post(:create, :user_id => resume.user.id, 
+  									:resume => { 	:name => "Resume", 
+  																:description => "Position", 
+  																:user_id => resume.user.id})
+  		}.to change(Resume, :count).by(1)
+  	end
+  end
+
 end
