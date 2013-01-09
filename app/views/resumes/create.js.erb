@@ -1,7 +1,7 @@
 <% if @resume.new_record? %>
 	$('input#resume_name').effect('highlight', {color: 'red'});
 <% else %>
-	$('#resume_list').append("<tr><td><%= @resume.name %></td><td><%= @resume.description %></td></tr>");
+	$('#resume_list tbody').append("<tr><%= escape_javascript(render @resume) %></tr>");
 <%end%>
 
 
