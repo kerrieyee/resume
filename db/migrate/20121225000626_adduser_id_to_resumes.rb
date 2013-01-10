@@ -1,8 +1,6 @@
 class AdduserIdToResumes < ActiveRecord::Migration
-  def up
+  def change
   	add_column :resumes, :user_id, :integer, :null => false
-  end
-
-  def down
+  	add_index :resumes, :user_id
   end
 end
