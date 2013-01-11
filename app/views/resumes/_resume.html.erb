@@ -1,8 +1,8 @@
-<%= div_for resume do%>
-	<tr>
+<%= div_for resume, remote: true do%>
+	<tr id="<%=resume.id%>">
 		<td><%=resume.name%></td>
 		<td><%=resume.description%></td>
-		<td><%=link_to "Edit", edit_resume_path(resume)%></td>
+		<td><%=link_to "Edit", edit_resume_path(resume)%><td>
 		<td><%=link_to "Delete Resume", resume_path(resume), :method => 'delete'%></td>
 	</tr>
 <%end%>

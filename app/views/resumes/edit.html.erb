@@ -1,2 +1,12 @@
-<h1>Resumes#edit</h1>
-<p>Find me in app/views/resumes/edit.html.erb</p>
+<h1>Edit Resume: <%= @resume.name %></h1>
+<div id = "create_resume_form">
+	<%=form_for @resume do |f|%>
+		<%=f.label :name%>
+		<%=f.text_field :name%> </br>
+		<%=f.label :description%>
+		<%=f.text_field :description%></br>
+		<%=f.submit "Update Resume"%>
+	<%end%>
+<div>
+
+

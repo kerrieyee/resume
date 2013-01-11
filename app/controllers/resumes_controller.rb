@@ -8,7 +8,6 @@ class ResumesController < ApplicationController
   end
 
   def create
-    puts "CREATE"
     @resume = Resume.new(:name => params[:resume][:name],
                           :description =>params[:resume][:description],
                           :user => current_user)
@@ -23,11 +22,16 @@ class ResumesController < ApplicationController
   end
 
   def edit
-    
+    @resume = Resume.find(params[:id])
   end
   
   def update
-    
+    @resume = Resume.find(params[:id])
+    if @resume.update_attributes(params[:resume])
+      redirect_to resumes_path, notice: "Resume was successfully updated."
+    else
+      render action: "edit"
+    end
   end
 
   def destroy
@@ -35,6 +39,4 @@ class ResumesController < ApplicationController
 
   def show
   end
-
- 
 end

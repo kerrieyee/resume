@@ -31,5 +31,29 @@ describe "Resumes ", :js => true do
 				page.should have_content("Application for DBC")
 			end
 		end
+
+		describe "resumes#edit" do
+			it "displays a form to update a new resume" do
+				visit resumes_path
+				within(:css, "tr##{resume.id}") do
+					click_link 'Edit' 
+				end
+				page.should have_content("Edit Resume: #{resume.name}")
+			end
+
+			it "updates a resume" do
+				visit edit_resume_path(resume.id)
+				fill_in 'resume_name', :with => "Oranges"
+				click_button 'Update Resume'
+				page.should have_content("Resume was successfully updated.")
+			end
+
+			it "renders the edit page if the updated info is invalid" do
+				visit edit_resume_path(resume.id)
+				fill_in 'resume_name', :with => ""
+				click_button 'Update Resume'
+				page.should_not have_content("Resume was successfully updated.")
+			end
+		end
 	end
 end
